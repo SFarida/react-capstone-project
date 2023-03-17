@@ -23,10 +23,25 @@ export const getCountries = createAsyncThunk('countries/fetchCountries', async (
   return countriesArr;
 });
 
+export const getCountryDetails = createAsyncThunk('countries/fetchCountryDetails', async (code) => {
+  const response = await axios.get(`${baseUrl}CountryInfo/${code}`);
+  return response.data;
+});
+
 const countriesSlice = createSlice({
   name: 'countries',
   initialState,
-  reducers: {},
+  reducers: {
+    addCountryInfo: (state, action) => ({
+      ...state,
+      allCountries: state.allCountries.map((country) => {
+        if (country.countryCode === action.payload.countryCode) {
+          return { ...country, info: action.payload };
+        }
+        return country;
+      }),
+    }),
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getCountries.pending, (state) => (
@@ -49,8 +64,36 @@ const countriesSlice = createSlice({
           allCountries: data,
           status: 'succeeded',
         };
+      })
+      .addCase(getCountryDetails.pending, (state) => (
+        {
+          ...state,
+          status: 'loading',
+        }
+      ))
+      .addCase(getCountryDetails.rejected, (state, action) => (
+        {
+          ...state,
+          status: 'failed',
+          error: action.error.message,
+        }
+      ))
+      // .addCase(getCountryDetails.fulfilled, (action) => action.payload);
+      .addCase(getCountryDetails.fulfilled, (state, action) => {
+        const data = action.payload;
+        console.log('detail to update', state, data.countryCode, data);
+        return {
+          ...state,
+          allCountries: state.allCountries.map((country) => {
+            if (country.countryCode === data.countryCode) {
+              return { ...country, info: data };
+            }
+            return country;
+          }),
+          status: 'succeeded',
+        };
       });
   },
 });
-
+export const { addCountryInfo } = countriesSlice.actions;
 export default countriesSlice.reducer;
