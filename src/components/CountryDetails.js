@@ -22,26 +22,27 @@ const CountryDetails = () => {
   if (selectedCountry.length !== 0) {
     if (selectedCountry.borders.length !== 0) {
       borders = selectedCountry.borders.map((border) => (
-        <div className="col d-flex flex-column gap-2" key={border.countryCode}>
-          <div className="d-flex ">
-            <div
-              className="feature-icon-small d-inline-flex align-items-center
-                justify-content-center text-bg-info bg-gradient fs-4 rounded-3"
-            >
-              <i className="fa fa-globe" aria-hidden="true" />
+        <li key={border.countryCode} className="list-group-item">
+          <div className="col d-flex flex-column">
+            <div className="d-flex align-items-center flex-wrap">
+              <div
+                className="feature-icon-small d-inline-flex align-items-center
+                justify-content-center fs-4"
+              >
+                <i className="fa fa-globe" aria-hidden="true" />
+              </div>
+              <h4 className="fw-semibold mb-0 ps-2">{border.officialName}</h4>
+              <span className="text-muted mx-2">
+                {border.region}
+                :
+              </span>
+              <span className="text-muted">
+                {border.commonName}
+              </span>
             </div>
-            <h4 className="fw-semibold mb-0">{border.officialName}</h4>
           </div>
-          <div className="ps-5 text-start">
-            <span className="text-muted mx-2">
-              {border.region}
-              :
-            </span>
-            <span className="text-muted">
-              {border.commonName}
-            </span>
-          </div>
-        </div>
+        </li>
+
       ));
     } else {
       borders = <p>No border</p>;
@@ -79,8 +80,10 @@ const CountryDetails = () => {
 
           <div className="col">
             <h3 className="pb-2 border-bottom">Borders</h3>
-            <div className="row row-cols-1 row-cols-sm-2 g-4">
-              {borders}
+            <div className="row row-cols-1 row-cols-sm-12 g-4">
+              <ul>
+                {borders}
+              </ul>
             </div>
           </div>
         </div>

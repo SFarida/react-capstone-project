@@ -17,7 +17,7 @@ const Countries = () => {
   return (
     <section className="container-fluid py-5" id="custom-cards">
       <h2 className="pb-2 border-bottom">Countries</h2>
-      <div className="row row-cols-1 row-cols-md-3 align-items-stretch g-4 py-3">
+      <div className="stats_grid">
         {
           allCountries.map((country) => (
             <Country

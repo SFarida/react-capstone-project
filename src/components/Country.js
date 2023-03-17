@@ -13,6 +13,7 @@ const Country = ({ name, code }) => {
     await dispatch(getCountryDetails(code));
     navigate(`/country-details/${code}`);
   };
+  console.log(name);
   return (
     <div
       className="col card card-cover h-100 overflow-hidden text-dark shadow-sm card_item mt-0 link"
@@ -22,7 +23,7 @@ const Country = ({ name, code }) => {
       tabIndex={0}
     >
       <div className="card-body">
-        <h4>{name}</h4>
+        <h4 className="text-wrap">{name}</h4>
         <p>{code}</p>
       </div>
     </div>
