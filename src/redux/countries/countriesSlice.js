@@ -81,7 +81,6 @@ const countriesSlice = createSlice({
       // .addCase(getCountryDetails.fulfilled, (action) => action.payload);
       .addCase(getCountryDetails.fulfilled, (state, action) => {
         const data = action.payload;
-        console.log('detail to update', state, data.countryCode, data);
         return {
           ...state,
           allCountries: state.allCountries.map((country) => {
