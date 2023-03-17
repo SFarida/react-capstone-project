@@ -8,41 +8,41 @@ import '@testing-library/jest-dom';
 import Country from '../components/Countries';
 
 jest.mock('../redux/countries/countriesSlice', () => ({
-    __esModule: true,
-    getCountries: jest.fn(),
-    addCountryInfo: jest.fn(),
+  __esModule: true,
+  getCountries: jest.fn(),
+  addCountryInfo: jest.fn(),
 }));
 
 const mockStore = configureMockStore([thunk]);
 
 describe('Countries', () => {
-    let store;
+  let store;
 
-    beforeEach(() => {
-        store = mockStore({
-            countries: {
-                allCountries: [
-                    {
-                        countryCode: 'AR',
-                        name: 'Argentina',
-                        info: [],
-                    }
-                ],
-                status: 'succeeded',
-                error: null,
-            }
-        })
+  beforeEach(() => {
+    store = mockStore({
+      countries: {
+        allCountries: [
+          {
+            countryCode: 'AR',
+            name: 'Argentina',
+            info: [],
+          },
+        ],
+        status: 'succeeded',
+        error: null,
+      },
     });
+  });
 
-    it('should render a country', () => {
-        const { getByText } = render(
-            <BrowserRouter>
-                <Provider store={store}>
-                    <Country />
-                </Provider>
-            </BrowserRouter>
-        );
-        expect(getByText('Argentina')).toBeInTheDocument();
-        expect(getByText('AR')).toBeInTheDocument();
-    });
+  it('should render a country', () => {
+    const { getByText } = render(
+      <BrowserRouter>
+        <Provider store={store}>
+          <Country />
+        </Provider>
+      </BrowserRouter>,
+    );
+    expect(getByText('Argentina')).toBeInTheDocument();
+    expect(getByText('AR')).toBeInTheDocument();
+  });
 });
