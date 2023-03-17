@@ -78,7 +78,6 @@ const countriesSlice = createSlice({
           error: action.error.message,
         }
       ))
-      // .addCase(getCountryDetails.fulfilled, (action) => action.payload);
       .addCase(getCountryDetails.fulfilled, (state, action) => {
         const data = action.payload;
         return {

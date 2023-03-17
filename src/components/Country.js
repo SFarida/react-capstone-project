@@ -1,25 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { getCountryDetails } from '../redux/countries/countriesSlice';
 
 const Country = ({ name, code }) => {
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
+  // to={`/country-details/${code}`}
+  const handleClick = async () => {
+    await dispatch(getCountryDetails(code));
+    navigate(`/country-details/${code}`);
+  };
   return (
-    <Link
-      to={`/country-details/${code}`}
+    <div
       className="col card card-cover h-100 overflow-hidden text-dark shadow-sm card_item mt-0 link"
-      onClick={async () => {
-        await dispatch(getCountryDetails(code));
-      }}
+      onClick={handleClick}
+      onKeyDown={handleClick}
+      role="button"
+      tabIndex={0}
     >
       <div className="card-body">
         <h4>{name}</h4>
         <p>{code}</p>
       </div>
-    </Link>
+    </div>
   );
 };
 
