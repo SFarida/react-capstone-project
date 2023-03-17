@@ -10,7 +10,7 @@ const Country = ({ name, code }) => {
   return (
     <Link
       to={`/country-details/${code}`}
-      className="card card-cover h-100 overflow-hidden rounded-4 shadow-lg card_item"
+      className="col card card-cover h-100 overflow-hidden text-dark shadow-sm card_item mt-0 link"
       onClick={async () => {
         await dispatch(getCountryDetails(code));
       }}

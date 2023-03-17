@@ -29,17 +29,20 @@ const Header = () => {
           <a href="https://date.nager.at/" target="_blank" rel="noreferrer">See all supported countries</a>
         </p>,
       );
+      setTimeout(() => {
+        setError('');
+      }, 10000);
     }
     setSearch('');
   };
 
   return (
-    <nav className="navbar bg-body-tertiary">
+    <nav className="navbar bg-info-subtle">
       <div className="container-fluid">
         <NavLink to="/" className="navbar-brand">
           <div className="d-flex flex-wrap align-items-center">
             <h2><span>Country Borders</span></h2>
-            <small className="ps-2">How many borders does your country has?</small>
+            <small className="ps-2 text-wrap">How many borders does your country have?</small>
           </div>
         </NavLink>
         <form
@@ -57,7 +60,7 @@ const Header = () => {
             maxLength="2"
             required
           />
-          <button className="btn btn-outline-success" type="submit">Search</button>
+          <button className="btn btn-outline-info" type="submit">Search</button>
         </form>
       </div>
       <div className="container text-center">

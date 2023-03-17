@@ -11,6 +11,7 @@ const Countries = () => {
     if (status === 'idle') {
       dispatch(getCountries());
     }
+    window.scrollTo(0, 0);
   }, [status, dispatch]);
 
   return (
