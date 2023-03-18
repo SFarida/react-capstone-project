@@ -12,18 +12,18 @@ const Country = ({ name, code }) => {
     navigate(`/country-details/${code}`);
   };
   return (
-    <div
+    <button
       className="col card card-cover h-100 overflow-hidden text-dark shadow-sm card_item mt-0 link"
       onClick={handleClick}
       onKeyDown={handleClick}
-      role="button"
+      type="button"
       tabIndex={0}
     >
       <div className="card-body">
         <h4 className="text-wrap">{name}</h4>
         <p>{code}</p>
       </div>
-    </div>
+    </button>
   );
 };
 

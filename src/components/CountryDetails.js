@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
-import Countries from './Countries';
 
 const CountryDetails = () => {
   const { code } = useParams();
@@ -101,7 +100,6 @@ const CountryDetails = () => {
   return (
     <div>
       {content}
-      <Countries />
     </div>
   );
 };

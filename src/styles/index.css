@@ -25,7 +25,7 @@ body {
   background-image: linear-gradient(to left, rgba(105, 202, 226, 1), rgba(210, 242, 249, 1));
 }
 
-.card_item:nth-child(2n+1) {
+.card_item:nth-child(even) {
   background-image: linear-gradient(to left, rgba(20, 90, 107, 1), rgba(28, 190, 227, 1));
 }
 
@@ -37,7 +37,7 @@ body {
   background-image: linear-gradient(to left, rgba(33, 147, 176, 1), rgba(109, 213, 237, 1));
 }
 
-.list-group-item:nth-child(odd) {
+.list-group-item:nth-child(even) {
   background-image: linear-gradient(to left, rgba(20, 90, 107, 1), rgba(28, 190, 227, 1));
 }
 
